@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sirocco — sand dunes</title>
+    <meta
+      name="description"
+      content="A cinematic Three.js sand sea. Wind, transverse dunes, heat haze, and a moving camera. No accounts, no APIs."
+    />
+    <meta name="theme-color" content="#0b0907" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23110e0b' width='32' height='32'/%3E%3Cpath d='M2 22c4-6 8-6 12 0s8 6 16 0' fill='none' stroke='%23e7c49a' stroke-width='1.6'/%3E%3Cpath d='M2 17c5-5 8-4 13 1s7 5 15-1' fill='none' stroke='%23c4894e' stroke-width='1.4'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <div class="bar top"></div>
+    <div class="bar bottom"></div>
+
+    <header>
+      <div class="brand">
+        <p class="kicker"><span class="live"><i></i>live wind</span> Erg Simoon · 24°N</p>
+        <h1>Sirocco</h1>
+      </div>
+      <div class="meta">
+        <span id="clock">17:42</span>
+        <span>field study 07</span>
+      </div>
+    </header>
+
+    <div id="tags" aria-hidden="true">
+      <div class="tag" id="tag-crest"><i></i>crest line</div>
+      <div class="tag" id="tag-slip"><i></i>slip face</div>
+      <div class="tag" id="tag-trough"><i></i>interdune</div>
+    </div>
+
+    <footer>
+      <div class="readout">
+        <div>
+          <em>Wind</em>
+          <strong id="wind-read">11.0 m/s</strong>
+        </div>
+        <div class="bearing">
+          <em>From</em>
+          <strong><svg id="arrow" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 19V5M12 5l-4.5 4.5M12 5l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span id="bearing-read">248°</span></strong>
+        </div>
+        <div>
+          <em>Haze</em>
+          <strong id="haze-read">mirage</strong>
+        </div>
+        <div>
+          <em>Camera</em>
+          <strong id="cam-read">cinematic</strong>
+        </div>
+      </div>
+
+      <form class="controls" onsubmit="return false">
+        <label>Hour <input id="hour" type="range" min="6.5" max="18.8" step="0.01" value="17.7" /></label>
+        <label>Wind <input id="wind" type="range" min="0.35" max="2.2" step="0.01" value="1.12" /></label>
+        <label>Haze <input id="haze" type="range" min="0" max="1.6" step="0.01" value="0.7" /></label>
+        <button type="button" id="cam-toggle" aria-pressed="true">Free look</button>
+        <button type="button" id="sound-toggle" aria-pressed="false">Wind audio</button>
+      </form>
+    </footer>
+
+    <p class="hint" id="hint">Drag to look · scroll to dolly · double-click returns to the path</p>
+    <p class="fallback" id="fallback" hidden>This scene needs WebGL2.</p>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
