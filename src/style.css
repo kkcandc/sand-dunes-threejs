@@ -283,10 +283,19 @@ input:focus-visible {
 
 .fallback {
   inset: 0;
-  display: grid;
   place-items: center;
   margin: 0;
   background: var(--bar);
+}
+
+/* Author `display` beats the UA `[hidden]` rule, which left this
+   full-viewport plate painted over the canvas. */
+#fallback[hidden] {
+  display: none !important;
+}
+
+#fallback:not([hidden]) {
+  display: grid;
 }
 
 body.ui-hidden header,
